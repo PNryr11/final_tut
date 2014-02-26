@@ -1,10 +1,11 @@
 SampleApp::Application.routes.draw do
   resources :users
-  get "users/new"
-#  root_path => '/'
-#  root_url  => 'http://localhost:3000/'
-#  root to: 'static_pages#home'
-  match '/signup', to: 'users#new', via: 'get'
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+  root  'static_pages#home'
+  match '/signup',  to: 'users#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
   get '/', to: 'static_pages#home'
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
