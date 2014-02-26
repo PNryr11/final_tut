@@ -47,14 +47,14 @@ describe User do
    describe "when email address is already taken" do
     before do
       user_with_same_email = @user.dup
-      user_with_same_email.email = @user.email.upcase
+      user_with_same_email.email = @user.email.downcase
       user_with_same_email.save
-    end
-=begin    
+    end   
+=begin
     describe "when name is already taken" do
     before do
       user_with_same_name = @user.dup
-      user_with_same_name.name = @user.name.downcase
+      user_with_same_name.name = @user.name
       user_with_same_name.save
     end
 =end
