@@ -50,7 +50,14 @@ describe User do
       user_with_same_email.email = @user.email.upcase
       user_with_same_email.save
     end
-
+=begin    
+    describe "when name is already taken" do
+    before do
+      user_with_same_name = @user.dup
+      user_with_same_name.name = @user.name.downcase
+      user_with_same_name.save
+    end
+=end
     it { should_not be_valid }
   end
     describe "when password is not present" do
